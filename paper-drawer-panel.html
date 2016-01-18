@@ -504,7 +504,8 @@ Custom property | Description | Default
         },
 
         observers: [
-          '_forceNarrowChanged(forceNarrow, defaultSelected)'
+          '_forceNarrowChanged(forceNarrow, defaultSelected)',
+          '_selectedChanged(selected)'
         ],
 
         /**
@@ -621,6 +622,10 @@ Custom property | Description | Default
         _forceNarrowChanged: function() {
           // set the narrow mode only if we reached the `responsiveWidth`
           this._responsiveChange(this.forceNarrow || this.$.mq.queryMatches);
+        },
+
+        _selectedChanged: function(selected){
+          document.body.style.overflow=selected=="drawer"?"hidden":"auto";
         },
 
         _swipeAllowed: function() {
